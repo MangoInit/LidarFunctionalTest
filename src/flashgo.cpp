@@ -453,7 +453,8 @@ int Flashgo::waitForData(size_t data_count, int timeout, size_t *returned_size)
                 return -1;
             }
             // Otherwise there was some error
-            THROW (IOException, errno);
+            qDebug() << "串口连接失败：" << lidar_num;
+//            THROW (IOException, errno);       //串口断开闪退
             return -2;
         }
         else if (n == 0)
