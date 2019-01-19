@@ -24,34 +24,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
-SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
-    dialoglidar.cpp \
-    uart.cpp \
-    flashgo.cpp \
-    flashgodriver.cpp \
-    controlform.cpp \
-    math_tools.cpp \
-    looptest.cpp
 
-HEADERS += \
-        mainwindow.h \
-    dialoglidar.h \
-    uart.h \
-    flashgo.h \
-    event.h \
-    locker.h \
-    flashgodriver.h \
-    controlform.h \
-    fastmath.h \
-    math_tools.h \
-    looptest.h
+SOURCES += \
+    src/controlform.cpp \
+    src/dialoglidar.cpp \
+    src/flashgo.cpp \
+    src/flashgodriver.cpp \
+    src/main.cpp \
+    src/mainwindow.cpp \
+    src/math_tools.cpp \
+    src/uart.cpp \
 
 FORMS += \
-        mainwindow.ui \
-    dialoglidar.ui \
-    controlform.ui
+    ui/controlform.ui \
+    ui/dialoglidar.ui \
+    ui/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -67,6 +54,19 @@ DEFINES +=BOOST_USE_LIB
 LIBS += /home/mango/boost_1_69_0/stage/lib/libboost_thread.a
 
 LIBS += /home/mango/boost_1_69_0/stage/lib/libboost_system.a
+
+HEADERS += \
+    include/controlform.h \
+    include/dialoglidar.h \
+    include/event.h \
+    include/fastmath.h \
+    include/flashgo.h \
+    include/flashgodriver.h \
+    include/locker.h \
+    include/mainwindow.h \
+    include/math_tools.h \
+    include/uart.h
+
 
 
 

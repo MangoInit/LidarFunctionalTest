@@ -1,0 +1,72 @@
+# narwel
+# 工厂雷达来料可靠性测试-串口ID软链接
+# /etc/udev/rules.d/99-usb-serial.rules
+# udevadm info --attribute-walk -n /dev/ttyUSB0  |grep serial (can be used to get serial number)
+# udevadm control --reload-rules (reload rules)
+# udevadm trigger (re-add all devices)
+# see https://wiki.archlinux.org/index.php/Bus_pirate
+# for some reason, ATTRS{bInterfaceNumber}=="00" is not working, hence the use of ENV{}
+
+#SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A55602", ENV{ID_USB_INTERFACE_NUM}=="00", GROUP="users", MODE="0666", SYMLINK+="ttyUSB_Lidar00"
+#SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A55602", ENV{ID_USB_INTERFACE_NUM}=="01", GROUP="users", MODE="0666", SYMLINK+="ttyUSB_Lidar01"
+
+#CP2105, USB to 2UART
+SUBSYSTEMS=="usb", ENV{.Interface_Num}="$attr{bInterfaceNumber}"
+SUBSYSTEMS=="usb", ENV{.Serial}="$attr{serial}"
+
+# dev 1-10
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555D3", SYMLINK+="ttyUSB_Lidar01_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555D4", SYMLINK+="ttyUSB_Lidar02_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555DC", SYMLINK+="ttyUSB_Lidar03_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555CE", SYMLINK+="ttyUSB_Lidar04_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555F9", SYMLINK+="ttyUSB_Lidar05_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555FB", SYMLINK+="ttyUSB_Lidar06_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555CC", SYMLINK+="ttyUSB_Lidar07_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555E9", SYMLINK+="ttyUSB_Lidar08_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555E0", SYMLINK+="ttyUSB_Lidar09_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555E2", SYMLINK+="ttyUSB_Lidar10_$env{.Interface_Num}"
+
+# dev 11-20
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555F4", SYMLINK+="ttyUSB_Lidar11_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555E4", SYMLINK+="ttyUSB_Lidar12_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555E5", SYMLINK+="ttyUSB_Lidar13_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555CD", SYMLINK+="ttyUSB_Lidar14_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555D7", SYMLINK+="ttyUSB_Lidar15_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555EA", SYMLINK+="ttyUSB_Lidar16_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555DF", SYMLINK+="ttyUSB_Lidar17_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555D2", SYMLINK+="ttyUSB_Lidar18_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555DE", SYMLINK+="ttyUSB_Lidar19_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555D5", SYMLINK+="ttyUSB_Lidar20_$env{.Interface_Num}"
+
+# dev 21-30
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555ED", SYMLINK+="ttyUSB_Lidar21_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555E6", SYMLINK+="ttyUSB_Lidar22_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555F8", SYMLINK+="ttyUSB_Lidar23_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555E8", SYMLINK+="ttyUSB_Lidar24_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555F3", SYMLINK+="ttyUSB_Lidar25_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555CF", SYMLINK+="ttyUSB_Lidar26_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555F7", SYMLINK+="ttyUSB_Lidar27_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555E7", SYMLINK+="ttyUSB_Lidar28_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555D1", SYMLINK+="ttyUSB_Lidar29_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555D9", SYMLINK+="ttyUSB_Lidar30_$env{.Interface_Num}"
+
+# dev 31-40
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555FD", SYMLINK+="ttyUSB_Lidar31_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555F6", SYMLINK+="ttyUSB_Lidar32_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555F1", SYMLINK+="ttyUSB_Lidar33_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555DD", SYMLINK+="ttyUSB_Lidar34_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555DB", SYMLINK+="ttyUSB_Lidar35_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555FC", SYMLINK+="ttyUSB_Lidar36_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555D8", SYMLINK+="ttyUSB_Lidar37_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555E1", SYMLINK+="ttyUSB_Lidar38_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555EF", SYMLINK+="ttyUSB_Lidar39_$env{.Interface_Num}"
+SUBSYSTEM=="tty",  ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea70", ATTRS{serial}=="00A555EC", SYMLINK+="ttyUSB_Lidar40_$env{.Interface_Num}"
+
+KERNEL=="ttyUSB*", GROUP="users", MODE="0666"
+
+#CP2102, USB to UART
+#SUBSYSTEMS=="usb", ENV{.LOCAL_ifNum}="$attr{bInterfaceNumber}"
+#SUBSYSTEM=="tty", ATTRS{idProduct}=="ea60", ATTRS{idVendor}=="10c4", ATTRS{serial}=="0001", SYMLINK+="ttyUSB_Lidar_Black_%E{.LOCAL_ifNum}"
+#SUBSYSTEM=="tty", ATTRS{idProduct}=="ea60", ATTRS{idVendor}=="10c4", ATTRS{serial}=="9999", SYMLINK+="ttyUSB_Lidar_Black_%E{.LOCAL_ifNum}"
+
+
