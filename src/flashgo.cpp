@@ -430,7 +430,8 @@ int Flashgo::waitForData(size_t data_count, int timeout, size_t *returned_size)
     {
         if (ioctl(lidar_serial_fd, FIONREAD, returned_size) == -1)
         {
-            THROW (IOException, errno);
+            qDebug() << "串口连接失败：" << lidar_num;
+//            THROW (IOException, errno);             //串口断开闪退
             return -2;
         }
         if (*returned_size >= data_count)
@@ -464,8 +465,9 @@ int Flashgo::waitForData(size_t data_count, int timeout, size_t *returned_size)
             assert (FD_ISSET(lidar_serial_fd, &input_set));
             if (ioctl(lidar_serial_fd, FIONREAD, returned_size) == -1)
             {
-                THROW (IOException, errno);
-                return -2;
+                qDebug() << "串口连接失败：" << lidar_num;
+//                THROW (IOException, errno);
+                return -2;                //串口断开闪退
             }
 
             if (*returned_size >= data_count)
