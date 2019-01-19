@@ -232,28 +232,14 @@ void Flashgo::disableDataGrabbing()
     {
         if (threadId)
         {
-//            pthread_join(threadId, NULL);
-//            threadId = (pid_t)-1;
             std::cout << "threadId : " << threadId << std::endl;
-//                bool ret = threadId->timed_join(boost::posix_time::microseconds(3000));
-                threadId->detach();
-//                if(ret)
-//                    qDebug() << "LD" << lidar_num << "threadId join success.";
-//                else
-//                    qDebug() << "LD" << lidar_num << "threadId join timeout.";
+            threadId->detach();
         }
 	
         if(pidTaskId)
         {
-//            pthread_join(pidTaskId, NULL);
-//            pidTaskId = (pid_t)-1;
             std::cout << "pidTaskId : " << pidTaskId << std::endl;
-//                bool ret = pidTaskId->timed_join(boost::posix_time::microseconds(3000));
-                pidTaskId->detach();
-//                if(ret)
-//                    qDebug() << "LD" << lidar_num << "pidTadkId join success.";
-//                else
-//                    qDebug() << "LD" << lidar_num << "pidTadkId join timeout.";
+            pidTaskId->detach();
         }
 
         isThreadOn = false;
@@ -781,8 +767,8 @@ int Flashgo::pidControlTask()
 
     for(int k = 0; k < 2; k++)
     {
-        MotorPidInit((arm_pid_instance_f32 *)&motorPidInstance[0], 1000, 100, 5);   //360       normal      Off
-        MotorPidInit((arm_pid_instance_f32 *)&motorPidInstance[1], 720, 140, 0);   //720       intensity   on
+        MotorPidInit((arm_pid_instance_f32 *)&motorPidInstance[0], 1000, 150, 0);   //360       normal      Off
+        MotorPidInit((arm_pid_instance_f32 *)&motorPidInstance[1], 600, 100, 0);   //720       intensity   on
     }
 
     while(isScanning)

@@ -92,8 +92,8 @@ __LINE__, (message) )
 #define LIDAR_RESP_MEASUREMENT_DISTANCE_SHIFT 2
 #define LIDAR_CURRENT_SCAN_RATE		   4000
 #define LIDAR_SCAN_FREQ_GAIN		   10	
-#define LIDAR_NODE_COUNT_DEFAULT      	   400      //最低点数要求
-#define LIDAR_NODE_COUNT_DOUBLE            650      //最高点数要求
+#define LIDAR_NODE_COUNT_DEFAULT      	   360      //最低点数要求
+#define LIDAR_NODE_COUNT_DOUBLE            720      //最高点数要求
 
 //#define LIDAR_MOTER_PWM_PERIOD          200000
 #define LIDAR_MOTER_PWM_PERIOD          200000

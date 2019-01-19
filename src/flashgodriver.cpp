@@ -55,13 +55,15 @@ void FlashgoDriver::loopFun()
 
         //Get Info to check that if Lidar is connect to Driver
 
+        //光强测试
         Lidar_Set_Mode(LIDAR_MODE::LIDAR_STOP_SCAN);
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
         Lidar_Set_Mode(LIDAR_MODE::LIDAR_INTENSITY_ON);
         std::this_thread::sleep_for(std::chrono::milliseconds(2000));
         test_mode = TEST_MODE_INTENSITY;
         std::this_thread::sleep_for(std::chrono::milliseconds(18000));
 
+        //盲区测试
         Lidar_Set_Mode(LIDAR_MODE::LIDAR_STOP_SCAN);
         std::this_thread::sleep_for(std::chrono::milliseconds(2000));
         test_mode = TEST_MODE_BLIND_ZONE;
@@ -284,7 +286,7 @@ void FlashgoDriver::publish_scan(node_info *node, size_t node_count, float angle
 //BlindZone
 void FlashgoDriver::BlindZoneTest(LaserScan *laserscan, int points)
 {
-    if(m_flashgo->lidar_scan_freq <= 115 && m_flashgo->lidar_scan_freq >= 100)
+    if(m_flashgo->lidar_scan_freq <= 114 && m_flashgo->lidar_scan_freq >= 107)
     {
         int i = 0;
 
@@ -333,7 +335,7 @@ void FlashgoDriver::BlindZoneTest(LaserScan *laserscan, int points)
 //Intensity
 void FlashgoDriver::IntensityTest(LaserScan *laserscan, int points)
 {
-    if(m_flashgo->lidar_scan_freq <= 62 && m_flashgo->lidar_scan_freq >= 54)
+    if(m_flashgo->lidar_scan_freq <= 57 && m_flashgo->lidar_scan_freq >= 54)
     {
         int i_pass = 0;
         int i_fail = 0;
