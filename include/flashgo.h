@@ -285,9 +285,10 @@ public:
     int subIntensity(u_int32_t timeout, u_int8_t &coff);
     int intensityCoffSave(u_int32_t timeout, u_int8_t &coff);
 
-    void MotorPidInit(arm_pid_instance_f32 *pid_instance, float Kp, float Ki, float Kd);
+    void MotorPidInit(arm_pid_instance_f32 *pid_instance, float Kp, float Ki, float Kd, int32_t resetStateFlag);
     float arm_pid_f32(arm_pid_instance_f32 *S, float in);
     void arm_pid_init_f32(arm_pid_instance_f32 *S, int32_t resetStateFlag);
+    void resetPIDState();
     int pidControlTask();
 protected:
     int waitPackage(node_info * node, u_int32_t timeout = DEFAULT_TIMEOUT);

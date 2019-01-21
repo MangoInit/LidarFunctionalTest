@@ -148,6 +148,7 @@ void DialogLidar::on_pushButton_loopStop_clicked()
 //清零
 void DialogLidar::on_pushButton_clicked()
 {
+    m_flashgoDriver->m_flashgo->resetPIDState();
     memset(&m_flashgoDriver->lidarResultDisplay, 0, sizeof(struct LidarResultDisplay));
 
     ui->lcdNumber_Blind_Y->display(0);

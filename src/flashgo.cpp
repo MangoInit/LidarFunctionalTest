@@ -770,8 +770,8 @@ int Flashgo::pidControlTask()
 
     for(int k = 0; k < 2; k++)
     {
-        MotorPidInit((arm_pid_instance_f32 *)&motorPidInstance[0], 1000, 150, 0);   //360       normal      Off
-        MotorPidInit((arm_pid_instance_f32 *)&motorPidInstance[1], 600, 100, 0);   //720       intensity   on
+        MotorPidInit((arm_pid_instance_f32 *)&motorPidInstance[0], 1000, 150, 0, 0);   //360       normal      Off
+        MotorPidInit((arm_pid_instance_f32 *)&motorPidInstance[1], 600, 100, 0, 0);   //720       intensity   on
     }
 
     while(isScanning)
@@ -1521,12 +1521,13 @@ int Flashgo::intensityCoffSave(u_int32_t timeout, u_int8_t &coff)
     return 0;
 }
 
-void Flashgo::MotorPidInit(arm_pid_instance_f32 *pid_instance, float Kp, float Ki, float Kd)
+//增加清零PID积分清零标志
+void Flashgo::MotorPidInit(arm_pid_instance_f32 *pid_instance, float Kp, float Ki, float Kd, int32_t resetStateFlag)
 {
 	pid_instance->Kp = Kp;
 	pid_instance->Ki = Ki;
 	pid_instance->Kd = Kd;
-	arm_pid_init_f32(pid_instance, 0);
+    arm_pid_init_f32(pid_instance, resetStateFlag);
 }
 
 float Flashgo::arm_pid_f32(arm_pid_instance_f32 *S, float in)
@@ -1565,3 +1566,12 @@ void Flashgo::arm_pid_init_f32(arm_pid_instance_f32 *S, int32_t resetStateFlag)
         memset(S->state, 0, 3u * sizeof(float));
     }
 }
+
+void Flashgo::resetPIDState()
+{
+    memset(motorPidInstance[0].state, 0, 3u*sizeof(float));
+    memset(motorPidInstance[1].state, 0, 3u*sizeof(float));
+}
+
+
+
