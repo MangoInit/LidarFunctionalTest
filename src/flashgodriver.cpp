@@ -53,7 +53,13 @@ void FlashgoDriver::loopFun()
         Lidar_Set_Mode(LIDAR_MODE::LIDAR_OPEN);
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
-        //Get Info to check that if Lidar is connect to Driver
+        //Get Health to check that if Lidar is connect to Driver
+        bool lidar_connected = driver_getDeviceHealth();
+        if(lidar_connected == false)
+        {
+            qDebug() << "LD" << lidar_number << "Lidar is not connect!!!";
+            break;
+        }
 
         //光强测试
         Lidar_Set_Mode(LIDAR_MODE::LIDAR_STOP_SCAN);
@@ -584,7 +590,6 @@ bool FlashgoDriver::driver_getDevInfo(std::string port)
              << "\nFirmware version:" << maxv << "." << midv << "." << minv
              << "\nHardware version:" << (uint16_t)devinfo.hardware_version
              << "\nModel:" <<  model.c_str();
-
     printf("[YDLIDAR INFO] Connection established in %s:\n"
                    "Firmware version: %u.%u.%u\n"
                    "Hardware version: %u\n"
@@ -597,10 +602,14 @@ bool FlashgoDriver::driver_getDevInfo(std::string port)
            (uint16_t)devinfo.hardware_version,
            model.c_str());
 
+    QString serialnum;
     for (int i=0;i<16;i++)
     {
         printf("%01X",devinfo.serialnum[i]&0xff);
+
+        serialnum.append(QString::number(unsigned(devinfo.serialnum[i]&0xff)));
     }
+    qDebug()<< "LD" << lidar_number << "Serial: " << serialnum;
     printf("\n");
 
     printf("[YDLIDAR INFO] Current Sampling Rate : %dK\n" , _samp_rate);

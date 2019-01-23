@@ -6,110 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>208</width>
-    <height>210</height>
+    <width>212</width>
+    <height>339</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="pushButton_open">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>20</y>
-     <width>41</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>UART</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_getInfo">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>50</y>
-     <width>41</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Info</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_getHealth">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>40</y>
-     <width>51</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Health</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_stopScan">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>20</y>
-     <width>41</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Stop</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_MoterEn">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>20</y>
-     <width>51</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Moter</string>
-   </property>
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_IntensityON">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>80</y>
-     <width>51</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Inten</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_IntensityOFF">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>80</y>
-     <width>51</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Blind</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButton_loopTest">
    <property name="geometry">
     <rect>
@@ -243,9 +146,9 @@ background-color: rgb(211, 215, 207);</string>
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>30</y>
-     <width>51</width>
-     <height>21</height>
+     <y>20</y>
+     <width>61</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -403,6 +306,73 @@ background-color: rgb(211, 215, 207);</string>
       </property>
       <property name="segmentStyle">
        <enum>QLCDNumber::Flat</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>219</y>
+     <width>161</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="QPushButton" name="pushButton_open">
+      <property name="text">
+       <string>UART</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="pushButton_MoterEn">
+      <property name="text">
+       <string>Moter</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="pushButton_getInfo">
+      <property name="text">
+       <string>Info</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="pushButton_getHealth">
+      <property name="text">
+       <string>Health</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="pushButton_IntensityON">
+      <property name="text">
+       <string>Inten</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="pushButton_IntensityOFF">
+      <property name="text">
+       <string>Blind</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" colspan="2">
+     <widget class="QPushButton" name="pushButton_stopScan">
+      <property name="text">
+       <string>Stop</string>
       </property>
      </widget>
     </item>

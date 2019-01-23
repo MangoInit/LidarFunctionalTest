@@ -18,13 +18,13 @@ DialogLidar::DialogLidar(QWidget *parent) :
     m_thread->start();
 
     //hide debug pushButtons
-    ui->pushButton_IntensityOFF->hide();
-    ui->pushButton_IntensityON->hide();
-    ui->pushButton_MoterEn->hide();
-    ui->pushButton_getHealth->hide();
-    ui->pushButton_getInfo->hide();
-    ui->pushButton_open->hide();
-    ui->pushButton_stopScan->hide();
+//    ui->pushButton_IntensityOFF->hide();
+//    ui->pushButton_IntensityON->hide();
+//    ui->pushButton_MoterEn->hide();
+//    ui->pushButton_getHealth->hide();
+//    ui->pushButton_getInfo->hide();
+//    ui->pushButton_open->hide();
+//    ui->pushButton_stopScan->hide();
 }
 
 DialogLidar::~DialogLidar()

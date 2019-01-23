@@ -15,14 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setCentralWidget(ui->gridWidget);
 
-//    scrollArea = new QScrollArea();
-//    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);   // 设置垂直滚动条一直可见
-//    scrollArea->show();
-//    scrollArea->setWidgetResizable(true);
-//    scrollArea->setWidget(this);
-//    gridLayout->addWidget(scrollArea);
-
-    for(int i=1; i<45; i++)
+    for(int i=1; i<5; i++)
     {
         m_dialogLidar[i] = new DialogLidar();
 
@@ -48,12 +41,8 @@ MainWindow::MainWindow(QWidget *parent) :
         num_horizontal = (i-1)/9;
         num_vertical = (i-1)%9;
         ui->gridLayout->addWidget(m_dialogLidar[i], num_horizontal, num_vertical);
-
-//        connect(m_controlForm, SIGNAL(sg_driver_OpenChoseUART()), m_dialogLidar[i]->m_flashgoDriver, SLOT(driver_openUart()));
-//        connect(m_controlForm, SIGNAL(sg_driver_MoterEn(bool)), m_dialogLidar[i]->m_flashgoDriver, SLOT(driver_MoterEn(bool)));
-//        connect(m_controlForm, SIGNAL(sg_driver_Lidar_Set_Mode(LIDAR_MODE)), m_dialogLidar[i]->m_flashgoDriver, SLOT(Lidar_Set_Mode(LIDAR_MODE)));
-//                m_dialogLidar[i]->m_flashgoDriver, &FlashgoDriver::loopFun);
     }
+
     m_controlForm = new ControlForm();
     ui->gridLayout->addWidget(m_controlForm, 4, 8);
     connect(m_controlForm, &ControlForm::sg_control_start, this, &MainWindow::sl_control_loopStart);
@@ -71,11 +60,11 @@ void MainWindow::wheelEvent(QWheelEvent *event)
 {
     if(event->delta() > 0)
     {
-        qDebug() << "wheel up";
+        qDebug() << "mouse wheel up";
     }
     else
     {
-        qDebug() << "wheel down";
+        qDebug() << "mouse wheel down";
     }
 }
 
