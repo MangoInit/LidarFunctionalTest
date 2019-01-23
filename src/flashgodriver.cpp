@@ -53,7 +53,13 @@ void FlashgoDriver::loopFun()
         Lidar_Set_Mode(LIDAR_MODE::LIDAR_OPEN);
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
-        //Get Info to check that if Lidar is connect to Driver
+        //Get Health to check that if Lidar is connect to Driver
+        bool lidar_connected = driver_getDeviceHealth();
+        if(lidar_connected == false)
+        {
+            qDebug() << "LD" << lidar_number << "Lidar is not connect!!!";
+            break;
+        }
 
         //光强测试
         Lidar_Set_Mode(LIDAR_MODE::LIDAR_STOP_SCAN);
