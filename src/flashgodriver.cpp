@@ -288,8 +288,8 @@ void FlashgoDriver::publish_scan(node_info *node, size_t node_count, float angle
         ;
 }
 
-//Xcm from the wall
-//BlindZone
+//8.8cm from the wall
+//BlindZone Test
 void FlashgoDriver::BlindZoneTest(LaserScan *laserscan, int points)
 {
     if(m_flashgo->lidar_scan_freq <= 114 && m_flashgo->lidar_scan_freq >= 107)
@@ -325,7 +325,7 @@ void FlashgoDriver::BlindZoneTest(LaserScan *laserscan, int points)
         double deg = RAD2DEG((double)rad);
         std::cout << "LD" << lidar_number << "deg:" << deg << std::endl;
         lidarResultPeriod.blind_times_period++;
-        if((100.0 >= deg) && (80.0 <= deg))                                                // angle to be determined
+        if((102.0 >= deg) && (80.0 <= deg))                                                // angle to be determined    //2019-01-24近距离精度问题，暂时放宽2cm
         {
 //            qDebug() << "LD" << lidar_number << "[LIDAR BLIND ZONE] Test Pass.";
             lidarResultPeriod.blind_Y_period++;
@@ -338,7 +338,7 @@ void FlashgoDriver::BlindZoneTest(LaserScan *laserscan, int points)
 }
 
 //above 50cm from the wall
-//Intensity
+//Intensity Test
 void FlashgoDriver::IntensityTest(LaserScan *laserscan, int points)
 {
     if(m_flashgo->lidar_scan_freq <= 57 && m_flashgo->lidar_scan_freq >= 54)

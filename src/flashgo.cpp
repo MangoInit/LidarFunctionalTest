@@ -770,7 +770,7 @@ int Flashgo::pidControlTask()
 
     for(int k = 0; k < 2; k++)
     {
-        MotorPidInit((arm_pid_instance_f32 *)&motorPidInstance[0], 1000, 150, 0, 0);   //360       normal      Off
+        MotorPidInit((arm_pid_instance_f32 *)&motorPidInstance[0], 1000, 130, 0, 0);   //360       normal      Off
         MotorPidInit((arm_pid_instance_f32 *)&motorPidInstance[1], 600, 100, 0, 0);   //720       intensity   on
     }
 
