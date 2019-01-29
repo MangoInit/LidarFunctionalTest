@@ -770,8 +770,8 @@ int Flashgo::pidControlTask()
 
     for(int k = 0; k < 2; k++)
     {
-        MotorPidInit((arm_pid_instance_f32 *)&motorPidInstance[0], 1000, 130, 0, 0);   //360       normal      Off
-        MotorPidInit((arm_pid_instance_f32 *)&motorPidInstance[1], 600, 100, 0, 0);   //720       intensity   on
+        MotorPidInit((arm_pid_instance_f32 *)&motorPidInstance[0], 0, 150, 1, 0);   //360       normal      Off
+        MotorPidInit((arm_pid_instance_f32 *)&motorPidInstance[1], 0, 150, 1, 0);   //720       intensity   on
     }
 
     while(isScanning)
@@ -1535,8 +1535,7 @@ float Flashgo::arm_pid_f32(arm_pid_instance_f32 *S, float in)
     float out;
 
     /* y[n] = y[n-1] + A0 * x[n] + A1 * x[n-1] + A2 * x[n-2]  */
-    out = (S->A0 * in) +
-      (S->A1 * S->state[0]) + (S->A2 * S->state[1]) + (S->state[2]);
+    out = (S->A0 * in) + (S->A1 * S->state[0]) + (S->A2 * S->state[1]) + (S->state[2]);
 
     /* Update state */
     S->state[1] = S->state[0];

@@ -41,6 +41,7 @@ void FlashgoDriver::loopFun()
         std::cout << "------------------------------------------------------" << thread() << std::endl;
         std::cout << "Hello, World!\t" << std::this_thread::get_id() << std::endl;
 
+        //开启雷达电机
         if(false == Lidar_Set_Mode(LIDAR_MODE::LIDAR_CONNECT))
         {
             loop = false;
@@ -50,6 +51,7 @@ void FlashgoDriver::loopFun()
         Q_EMIT sg_uart_dis(true);
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
+        //开启雷达发射管
         Lidar_Set_Mode(LIDAR_MODE::LIDAR_OPEN);
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
@@ -76,9 +78,11 @@ void FlashgoDriver::loopFun()
         Lidar_Set_Mode(LIDAR_MODE::LIDAR_INTENSITY_OFF);
         std::this_thread::sleep_for(std::chrono::milliseconds(15000));
 
+        //关闭雷达发射管
         Lidar_Set_Mode(LIDAR_MODE::LIDAR_STOP_SCAN);
         std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 
+        //关闭雷达电机
         Lidar_Set_Mode(LIDAR_MODE::LIDAR_CLOSE);
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
@@ -298,7 +302,7 @@ void FlashgoDriver::BlindZoneTest(LaserScan *laserscan, int points)
         return ;
     }
 
-    if(m_flashgo->lidar_scan_freq <= 114 && m_flashgo->lidar_scan_freq >= 107)
+    if(m_flashgo->lidar_scan_freq <= 113 && m_flashgo->lidar_scan_freq >= 111)
     {
         int i = 0;
 
@@ -353,7 +357,7 @@ void FlashgoDriver::IntensityTest(LaserScan *laserscan, int points)
         return ;
     }
 
-    if(m_flashgo->lidar_scan_freq <= 57 && m_flashgo->lidar_scan_freq >= 54)
+    if(m_flashgo->lidar_scan_freq <= 55 && m_flashgo->lidar_scan_freq >= 54)
     {
         int i_pass = 0;
         int i_fail = 0;

@@ -65,7 +65,7 @@ public:
 
     bool switch_period()
     {
-        if((blind_times_period >= 20) && (intensity_times_period >= 20))
+        if((blind_times_period >= 60) && (intensity_times_period >= 40))
         {
             return true;
         }
